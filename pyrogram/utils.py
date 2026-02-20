@@ -32,6 +32,12 @@ from typing import Union, List, Dict, Optional
 import pyrogram
 from pyrogram import raw, enums
 from pyrogram import types
+# Compatibility patch for different raw versions
+if not hasattr(raw.base, "RequestedPeer"):
+    class RequestedPeer:
+        pass
+    raw.base.RequestedPeer = RequestedPeer
+
 from pyrogram.file_id import FileId, FileType, PHOTO_TYPES, DOCUMENT_TYPES
 
 
