@@ -16,6 +16,7 @@
 #  You should have received a copy of the GNU Lesser General Public License
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
+from enum import auto
 from pyrogram import raw
 from .auto_name import AutoName
 
@@ -67,6 +68,9 @@ class MessageEntityType(AutoName):
 
     BLOCKQUOTE = raw.types.MessageEntityBlockquote
     "Blockquote text"
+
+    EXPANDABLE_BLOCKQUOTE = auto()
+    "collapsed-by-default block quotation"
 
     TEXT_LINK = raw.types.MessageEntityTextUrl
     "For clickable text URLs"
