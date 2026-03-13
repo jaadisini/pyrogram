@@ -124,7 +124,11 @@ class MessageEntity(Object):
         if self.custom_emoji_id is not None:
             args["document_id"] = self.custom_emoji_id
 
-        entity = self.type.value
+        if self.type == enums.MessageEntityType.EXPANDABLE_BLOCKQUOTE:
+            entity = raw.types.MessageEntityBlockquote
+            args["collapsed"] = True
+        else:
+            entity = self.type.value
 
         if entity is raw.types.MessageEntityMentionName:
             entity = raw.types.InputMessageEntityMentionName
