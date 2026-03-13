@@ -56,12 +56,12 @@ class MessageEntityBlockquote(TLObject):  # type: ignore
     def __init__(self, *, offset: int, length: int, collapsed: bool = False) -> None:
         self.offset = offset  # int
         self.length = length  # int
-        sepf.collapsed = collapsed
+        self.collapsed = collapsed
 
     @staticmethod
     def read(b: BytesIO, *args: Any) -> "MessageEntityBlockquote":
         # No flags
-        flags = int.read(b)
+        flags = Int.read(b)
 
         offset = Int.read(b)
         
@@ -79,7 +79,7 @@ class MessageEntityBlockquote(TLObject):  # type: ignore
         if self.collapsed:
             flags |= 1
         
-        b.write(Int(self.ID False))
+        b.write(Int(self.ID))
 
         b.write(Int(flags))
 
