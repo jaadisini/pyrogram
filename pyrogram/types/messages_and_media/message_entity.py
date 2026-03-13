@@ -83,7 +83,15 @@ class MessageEntity(Object):
             entity_type = enums.MessageEntityType.TEXT_MENTION
             user_id = entity.user_id.user_id
         else:
-            entity_type = enums.MessageEntityType(entity.__class__)
+    
+            if isinstance(entity, raw.types.MessageEntityBlockquote):
+                if getattr(entity, "collapsed", False):
+                    entity_type = enums.MessageEntityType.EXPANDABLE_BLOCKQUOTE
+                else:
+                    entity_type = enums.MessageEntityType.BLOCKQUOTE
+            else:
+                entity_type = enums.MessageEntityType(entity.__class__)
+
             user_id = getattr(entity, "user_id", None)
 
         return MessageEntity(
