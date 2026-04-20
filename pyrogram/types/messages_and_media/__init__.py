@@ -53,6 +53,7 @@ from .web_app_data import WebAppData
 from .web_page import WebPage
 from .message_reactions import MessageReactions
 from .message_story import MessageStory
+from .message_effect import MessageEffect
 from .my_boost import MyBoost
 
 __all__ = [
