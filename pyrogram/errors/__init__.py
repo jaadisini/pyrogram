@@ -18,7 +18,7 @@
 
 from .exceptions import *
 from .rpc_error import UnknownError
-
+from .pyromod import ListenerTimeout
 
 class BadMsgNotification(Exception):
     descriptions = {
